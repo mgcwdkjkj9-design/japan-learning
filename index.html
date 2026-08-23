@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#176b57">
+<title>日本旅遊日文衝刺｜150 詞＋40 句</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#222;--muted:#707070;--line:#e2ded5;--accent:#176b57;--soft:#e8f2ee}
+*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+header{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);padding:18px;border-bottom:1px solid var(--line);z-index:2}
+.wrap{max-width:980px;margin:auto}h1{margin:0 0 5px;font-size:27px}.sub{color:var(--muted);font-size:14px;margin-bottom:12px}
+.controls{display:grid;gap:8px}input,select{font:inherit;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;width:100%}
+main{padding:14px}.stats{font-size:13px;color:var(--muted);margin:4px 2px 12px}.grid{display:grid;gap:11px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:15px;box-shadow:0 1px 7px rgba(0,0,0,.035)}
+.row{display:flex;justify-content:space-between;gap:12px}.jp{font-size:25px;font-weight:750;line-height:1.35}.kana{color:var(--accent);margin-top:3px}.romaji{color:var(--muted);font-size:13px;margin-top:2px}.zh{margin-top:9px}.tag{display:inline-block;font-size:11px;color:var(--muted);margin-top:10px;padding:3px 7px;border:1px solid var(--line);border-radius:999px}
+.play{border:0;border-radius:12px;background:var(--accent);color:#fff;padding:9px 12px;height:43px;min-width:48px;font-size:17px;cursor:pointer}
+.tip{background:var(--soft);color:#315b50;padding:9px 11px;border-radius:12px;font-size:12px;margin-top:9px}
+@media(min-width:700px){.controls{grid-template-columns:2fr 1fr 1fr}.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>日本旅遊日文衝刺</h1>
+<div class="sub">150 個高頻詞＋40 個實用句｜日文・假名・Romaji・中文</div>
+<div class="controls">
+<input id="q" type="search" placeholder="搜尋：行李、にもつ、nimotsu、購物…">
+<select id="type"><option value="all">全部</option><option value="word">單字</option><option value="sentence">句子</option></select>
+<select id="cat"><option value="all">全部分類</option></select>
+</div>
+<div class="tip">▶︎ 使用 iPhone / 瀏覽器內建的日文語音播放。語音品質取決於裝置的日文語音；建議 iPhone 使用 Safari。</div>
+</div></header>
+<main class="wrap"><div id="stats" class="stats"></div><div id="list" class="grid"></div></main>
+<script>
+const W = "基本溝通|私|わたし|watashi|我\n基本溝通|これ|これ|kore|這個\n基本溝通|それ|それ|sore|那個\n基本溝通|ここ|ここ|koko|這裡\n基本溝通|そこ|そこ|soko|那裡\n基本溝通|どこ|どこ|doko|哪裡\n基本溝通|何|なに／なん|nani / nan|什麼\n基本溝通|いくら|いくら|ikura|多少錢\n基本溝通|大丈夫|だいじょうぶ|daijōbu|沒問題／不用\n基本溝通|お願い|おねがい|onegai|拜託／麻煩\n購物|店|みせ|mise|店\n購物|サイズ|サイズ|saizu|尺寸\n購物|色|いろ|iro|顏色\n購物|別|べつ|betsu|其他／不同\n購物|試着|しちゃく|shichaku|試穿\n購物|免税|めんぜい|menzei|免稅\n購物|現金|げんきん|genkin|現金\n購物|カード|カード|kādo|卡\n購物|袋|ふくろ|fukuro|袋子\n購物|値段|ねだん|nedan|價格\n交通住宿|駅|えき|eki|車站\n交通住宿|電車|でんしゃ|densha|電車\n交通住宿|入口|いりぐち|iriguchi|入口\n交通住宿|出口|でぐち|deguchi|出口\n交通住宿|乗り換え|のりかえ|norikae|轉乘\n交通住宿|荷物|にもつ|nimotsu|行李\n交通住宿|予約|よやく|yoyaku|預約\n交通住宿|部屋|へや|heya|房間\n交通住宿|時間|じかん|jikan|時間\n交通住宿|トイレ|トイレ|toire|廁所\n餐廳|店内|てんない|tennai|店內／內用\n餐廳|持ち帰り|もちかえり|mochikaeri|外帶\n餐廳|メニュー|メニュー|menyū|菜單\n餐廳|注文|ちゅうもん|chūmon|點餐\n餐廳|おすすめ|おすすめ|osusume|推薦\n餐廳|水|みず|mizu|水\n餐廳|お茶|おちゃ|ocha|茶\n餐廳|ご飯|ごはん|gohan|飯／餐\n餐廳|肉|にく|niku|肉\n餐廳|牛肉|ぎゅうにく|gyūniku|牛肉\n餐廳|豚肉|ぶたにく|butaniku|豬肉\n餐廳|鶏肉|とりにく|toriniku|雞肉\n餐廳|野菜|やさい|yasai|蔬菜\n餐廳|卵|たまご|tamago|蛋\n餐廳|牛乳|ぎゅうにゅう|gyūnyū|牛奶\n餐廳|甘い|あまい|amai|甜\n餐廳|辛い|からい|karai|辣\n餐廳|熱い|あつい|atsui|熱／燙\n餐廳|冷たい|つめたい|tsumetai|冰／冷\n餐廳|美味しい|おいしい|oishii|好吃\n餐廳|一つ|ひとつ|hitotsu|一個\n餐廳|二つ|ふたつ|futatsu|兩個\n餐廳|一人|ひとり|hitori|一個人\n餐廳|二人|ふたり|futari|兩個人\n餐廳|会計|かいけい|kaikei|結帳\n餐廳|レジ|レジ|reji|收銀台\n餐廳|箸|はし|hashi|筷子\n餐廳|スプーン|スプーン|supūn|湯匙\n餐廳|無料|むりょう|muryō|免費\n餐廳|有料|ゆうりょう|yūryō|收費\n購物|買う|かう|kau|買\n購物|見る|みる|miru|看\n購物|高い|たかい|takai|貴／高\n購物|安い|やすい|yasui|便宜\n購物|大きい|おおきい|ōkii|大\n購物|小さい|ちいさい|chiisai|小\n購物|新しい|あたらしい|atarashii|新\n購物|黒|くろ|kuro|黑\n購物|白|しろ|shiro|白\n購物|赤|あか|aka|紅\n購物|青|あお|ao|藍\n購物|緑|みどり|midori|綠\n購物|グレー|グレー|gurē|灰色\n購物|在庫|ざいこ|zaiko|庫存\n購物|商品|しょうひん|shōhin|商品\n購物|限定|げんてい|gentei|限定\n購物|売り切れ|うりきれ|urikire|售罄\n購物|試着室|しちゃくしつ|shichakushitsu|試衣間\n購物|靴|くつ|kutsu|鞋\n購物|服|ふく|fuku|衣服\n購物|帽子|ぼうし|bōshi|帽子\n購物|円|えん|en|日圓\n購物|税込|ぜいこみ|zeikomi|含稅\n購物|税別|ぜいべつ|zeibetsu|未稅\n購物|レシート|レシート|reshīto|收據\n購物|お釣り|おつり|otsuri|找零\n購物|支払い|しはらい|shiharai|付款\n購物|暗証番号|あんしょうばんごう|anshō bangō|PIN／密碼\n購物|階|かい|kai|樓層\n購物|売り場|うりば|uriba|賣場／販售區\n交通|行く|いく|iku|去\n交通|来る|くる|kuru|來\n交通|乗る|のる|noru|搭乘\n交通|降りる|おりる|oriru|下車\n交通|切符|きっぷ|kippu|車票\n交通|改札|かいさつ|kaisatsu|驗票口／閘門\n交通|ホーム|ホーム|hōmu|月台\n交通|番線|ばんせん|bansen|第幾月台／軌道\n交通|普通|ふつう|futsū|普通車\n交通|快速|かいそく|kaisoku|快速\n交通|急行|きゅうこう|kyūkō|急行\n交通|特急|とっきゅう|tokkyū|特急\n交通|地下鉄|ちかてつ|chikatetsu|地鐵\n交通|バス|バス|basu|公車\n交通|タクシー|タクシー|takushī|計程車\n交通|空港|くうこう|kūkō|機場\n交通|右|みぎ|migi|右\n交通|左|ひだり|hidari|左\n交通|前|まえ|mae|前面\n交通|後ろ|うしろ|ushiro|後面\n交通|中|なか|naka|裡面\n交通|外|そと|soto|外面\n交通|上|うえ|ue|上面\n交通|下|した|shita|下面\n交通|東|ひがし|higashi|東\n交通|西|にし|nishi|西\n交通|次|つぎ|tsugi|下一個\n交通|最後|さいご|saigo|最後\n交通|到着|とうちゃく|tōchaku|抵達\n交通|出発|しゅっぱつ|shuppatsu|出發\n飯店景點救場|ホテル|ホテル|hoteru|飯店\n飯店景點救場|チェックイン|チェックイン|chekku-in|入住\n飯店景點救場|チェックアウト|チェックアウト|chekku-auto|退房\n飯店景點救場|預ける|あずける|azukeru|寄放\n飯店景點救場|取る|とる|toru|拿／取\n飯店景點救場|鍵|かぎ|kagi|鑰匙\n飯店景點救場|名前|なまえ|namae|名字\n飯店景點救場|パスポート|パスポート|pasupōto|護照\n飯店景點救場|チケット|チケット|chiketto|票\n飯店景點救場|写真|しゃしん|shashin|照片\n飯店景點救場|撮る|とる|toru|拍攝\n飯店景點救場|入る|はいる|hairu|進入\n飯店景點救場|開く|あく|aku|開\n飯店景點救場|閉まる|しまる|shimaru|關閉\n飯店景點救場|今日|きょう|kyō|今天\n飯店景點救場|明日|あした|ashita|明天\n飯店景點救場|今|いま|ima|現在\n飯店景點救場|何時|なんじ|nanji|幾點\n飯店景點救場|分|ふん／ぷん|fun / pun|分鐘\n飯店景點救場|分かる|わかる|wakaru|明白／懂\n飯店景點救場|分からない|わからない|wakaranai|不懂\n飯店景點救場|日本語|にほんご|nihongo|日文\n飯店景點救場|英語|えいご|eigo|英文\n飯店景點救場|ゆっくり|ゆっくり|yukkuri|慢慢地\n飯店景點救場|もう一度|もういちど|mō ichido|再一次\n飯店景點救場|すみません|すみません|sumimasen|不好意思\n飯店景點救場|ありがとう|ありがとう|arigatō|謝謝\n飯店景點救場|あります|あります|arimasu|有\n飯店景點救場|ない|ない|nai|沒有\n飯店景點救場|できます|できます|dekimasu|可以／能夠";
+const S = "一定要會|すみません。|すみません|Sumimasen.|不好意思／請問。\n一定要會|ありがとうございます。|ありがとうございます|Arigatō gozaimasu.|謝謝。\n一定要會|これ、お願いします。|これ、おねがいします|Kore, onegaishimasu.|我要這個／麻煩這個。\n一定要會|大丈夫です。|だいじょうぶです|Daijōbu desu.|可以／不用了／沒關係。\n一定要會|これは何ですか？|これはなんですか|Kore wa nan desu ka?|這是什麼？\n一定要會|〜はどこですか？|〜はどこですか|~ wa doko desu ka?|～在哪裡？\n一定要會|〜ありますか？|〜ありますか|~ arimasu ka?|有～嗎？\n一定要會|〜てもいいですか？|〜てもいいですか|~te mo ii desu ka?|可以～嗎？\n一定要會|もう一度お願いします。|もういちどおねがいします|Mō ichido onegaishimasu.|麻煩再說一次。\n一定要會|ゆっくりお願いします。|ゆっくりおねがいします|Yukkuri onegaishimasu.|麻煩說慢一點。\n餐廳|一人です。|ひとりです|Hitori desu.|一位。\n餐廳|これ、一つお願いします。|これ、ひとつおねがいします|Kore, hitotsu onegaishimasu.|這個一份。\n餐廳|おすすめは何ですか？|おすすめはなんですか|Osusume wa nan desu ka?|推薦什麼？\n餐廳|お水お願いします。|おみずおねがいします|Omizu onegaishimasu.|麻煩給我水。\n餐廳|店内で。|てんないで|Tennai de.|內用。\n餐廳|持ち帰りで。|もちかえりで|Mochikaeri de.|外帶。\n餐廳|お会計お願いします。|おかいけいおねがいします|Okaikei onegaishimasu.|麻煩結帳。\n餐廳|カード使えますか？|カードつかえますか|Kādo tsukaemasu ka?|可以刷卡嗎？\n購物|これ、ありますか？|これ、ありますか|Kore, arimasu ka?|有這個嗎？\n購物|Mサイズありますか？|エムサイズありますか|Emu saizu arimasu ka?|有 M 號嗎？\n購物|別の色はありますか？|べつのいろはありますか|Betsu no iro wa arimasu ka?|有其他顏色嗎？\n購物|試着してもいいですか？|しちゃくしてもいいですか|Shichaku shite mo ii desu ka?|可以試穿嗎？\n購物|新しいものはありますか？|あたらしいものはありますか|Atarashii mono wa arimasu ka?|有新的嗎？\n購物|免税できますか？|めんぜいできますか|Menzei dekimasu ka?|可以免稅嗎？\n購物|これにします。|これにします|Kore ni shimasu.|我要這個。\n購物|ちょっと考えます。|ちょっとかんがえます|Chotto kangaemasu.|我再考慮一下。\n交通|この電車、京都に行きますか？|このでんしゃ、きょうとにいきますか|Kono densha, Kyōto ni ikimasu ka?|這班電車會到京都嗎？\n交通|ここで乗り換えですか？|ここでのりかえですか|Koko de norikae desu ka?|在這裡轉車嗎？\n交通|何番線ですか？|なんばんせんですか|Nan-bansen desu ka?|第幾月台？\n交通|駅はどこですか？|えきはどこですか|Eki wa doko desu ka?|車站在哪？\n交通|この電車で大丈夫ですか？|このでんしゃでだいじょうぶですか|Kono densha de daijōbu desu ka?|搭這班車對嗎？\n交通|次ですか？|つぎですか|Tsugi desu ka?|是下一站嗎？\n飯店景點|予約しています。|よやくしています|Yoyaku shiteimasu.|我有預約。\n飯店景點|チェックインお願いします。|チェックインおねがいします|Chekku-in onegaishimasu.|我要辦入住。\n飯店景點|荷物、預けてもいいですか？|にもつ、あずけてもいいですか|Nimotsu, azukete mo ii desu ka?|可以寄放行李嗎？\n飯店景點|荷物を取りに来ました。|にもつをとりにきました|Nimotsu o tori ni kimashita.|我來拿行李。\n飯店景點|何時までですか？|なんじまでですか|Nanji made desu ka?|到幾點？\n飯店景點|写真、撮ってもいいですか？|しゃしん、とってもいいですか|Shashin, totte mo ii desu ka?|可以拍照嗎？\n救場|すみません、よく分かりません。|すみません、よくわかりません|Sumimasen, yoku wakarimasen.|不好意思，我不太懂。\n救場|英語でもいいですか？|えいごでもいいですか|Eigo demo ii desu ka?|可以用英文嗎？";
+const parse=(s,t)=>s.trim().split('\n').map(x=>{const [cat,jp,kana,romaji,zh]=x.split('|');return{type:t,cat,jp,kana,romaji,zh}});
+const data=[...parse(W,'word'),...parse(S,'sentence')];
+const q=document.querySelector('#q'),type=document.querySelector('#type'),cat=document.querySelector('#cat'),list=document.querySelector('#list'),stats=document.querySelector('#stats');
+[...new Set(data.map(x=>x.cat))].forEach(x=>{const o=document.createElement('option');o.value=x;o.textContent=x;cat.appendChild(o)});
+function speak(t){
+ if(!('speechSynthesis' in window)){alert('此瀏覽器不支援語音播放');return}
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(t.replaceAll('〜',''));
+ u.lang='ja-JP';u.rate=.82;u.pitch=1;
+ const voices=speechSynthesis.getVoices();
+ const v=voices.find(v=>v.lang==='ja-JP')||voices.find(v=>v.lang.startsWith('ja'));
+ if(v)u.voice=v;
+ speechSynthesis.speak(u);
+}
+function render(){
+ const s=q.value.trim().toLowerCase();
+ const a=data.filter(x=>(type.value==='all'||x.type===type.value)&&(cat.value==='all'||x.cat===cat.value)&&[x.jp,x.kana,x.romaji,x.zh,x.cat].join(' ').toLowerCase().includes(s));
+ stats.textContent=`顯示 ${a.length} / ${data.length} 項`;
+ list.innerHTML='';
+ for(const x of a){
+  const card=document.createElement('article');card.className='card';
+  card.innerHTML=`<div class="row"><div><div class="jp">${x.jp}</div><div class="kana">${x.kana}</div><div class="romaji">${x.romaji}</div></div><button class="play" aria-label="播放日文">▶︎</button></div><div class="zh">${x.zh}</div><div class="tag">${x.type==='word'?'單字':'句子'}・${x.cat}</div>`;
+  card.querySelector('.play').onclick=()=>speak(x.jp);
+  list.appendChild(card);
+ }
+}
+q.oninput=render;type.onchange=render;cat.onchange=render;
+render();
+</script>
+</body></html>
